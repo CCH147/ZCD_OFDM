@@ -37,11 +37,8 @@ for k = 1:M
     s_tx = s_tx + 2 * real(ak_truth(k) * exp(1j * 2*pi * k * f0 * t));
 end
 % 加入最高頻的強載波 (M+1)
-s_tx = s_tx + 2 * real(aM_carrier * exp(1j * 2*pi * (M+1) * f0 * t));
+rx_signal = s_tx + 2 * real(aM_carrier * exp(1j * 2*pi * (M+1) * f0 * t));
 
-
-true_k = 0.35; % 假設空氣讓訊號振幅萎縮成原本的 35%
-rx_signal = true_k * s_tx; 
 
 % ========================================================
 % 4. RX: 接收端 (尋找過零點 ZCD)
@@ -91,8 +88,7 @@ end
 figure('Name', 'ZCD & Vieta Demodulation', 'Color', 'w');
 
 subplot(2,1,1);
-plot(t, s_tx, 'b--', 'LineWidth', 1, 'DisplayName', 'TX 原始波形'); hold on;
-plot(t, rx_signal, 'k-', 'LineWidth', 1.5, 'DisplayName', 'RX 衰減波形 (k=0.35)');
+plot(t, rx_signal, 'b--', 'LineWidth', 1, 'DisplayName', 'TX 原始波形'); hold on;
 plot(tk_measured, zeros(size(tk_measured)), 'ro', 'MarkerSize', 8, 'LineWidth', 2, 'DisplayName', '偵測到過零點');
 title('時域波形與過零點');
 xlabel('Time (s)'); ylabel('Amplitude');
