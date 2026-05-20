@@ -42,22 +42,21 @@ $$P(z) = (z - r_1)(z - r_2)(z - r_3)\\dots(z - r_{2M+2}) = 0$$
 ```mermaid
 graph TD
     %% 定義風格
-    classDef txStyle fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
-    classDef chStyle fill:#fff3e0,stroke:#e65100,stroke-width:2px;
-    classDef rxStyle fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px;
+    classDef txStyle fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:black;
+    classDef chStyle fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:black;;
+    classDef rxStyle fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:black;
 
-    %% 發射端流程
-    subgraph TX [發射端 TX - 訊號建構與零點遷移]
+    %% 發射端流程 (使用 span 標籤將字體強制設為黑色)
+    subgraph TX 發射端 TX - 訊號建構與零點遷移
         A[原始資料 16-QAM<br>複數符碼 a1 ~ a4]-->|Step 1: 分配子載波| C[強載波計算 a5<br>]  
         C -->|Step 3: 鎖定單位圓| E[多載波調變與訊號合成<br> IFFT 運算]
-        
     end
 
     %% 通道流程
     E -->|發射實數時域波形 s_tx| CH[RX 接收]
 
-    %% 接收端流程
-    subgraph RX [接收端 RX - 量測過零點與資料還原]
+    %% 接收端流程 (使用 span 標籤將字體強制設為黑色)
+    subgraph RX 接收端 RX - 量測過零點與資料還原
         CH -->F[線性內插,找出穿過 0 伏特的瞬間時間 tk<br>]
         F --> |尤拉公式轉換| G[tk 時間映射複數平面單位圓上的根 rk<br>]
         G -->|單位圓上的複數根rk| H[韋達定理展開 poly<br>]
@@ -66,7 +65,7 @@ graph TD
         J -->|共軛切片 ［a1*, a2*, a3*, a4*］| K[共軛運算 conj<br>還原原始資料]
     end
 
-    %% 套用風格
-    class A,B,C,D,E txStyle;
+    %% 套用風格 (已移除未定義的 B, D 節點避免報錯)
+    class A,C,E txStyle;
     class CH chStyle;
     class F,G,H,I,J,K rxStyle;
