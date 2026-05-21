@@ -86,7 +86,9 @@ $$P(z) = (z - r_1)(z - r_2)(z - r_3)\\dots(z - r_{2M+2}) = 0$$
 
 ---
 
+## 驗證
 
+![image](output.png)
 
 ```mermaid
 graph TD
