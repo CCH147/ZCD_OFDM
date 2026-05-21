@@ -66,7 +66,7 @@ rk_measured = exp(1j * 2*pi * f0 * tk_measured);
 p_recon = poly(rk_measured).';
 
 % (C) 比例校正 (Scaling)
-% 這裡展現了抗衰減魔法！接收端只要除以展開後的首項，並乘回已知的 TX 強載波
+% 接收端除以展開後的首項，並乘回已知的 TX 強載波
 scale = aM_carrier / p_recon(1); 
 p_scaled = p_recon * scale;
 
