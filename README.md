@@ -1,4 +1,4 @@
-# 基於零點遷移與韋達定理之 ZCD-OFDM 電路與演算法
+# 基於零點遷移與韋達定理之 ZCD-OFDM 
 
 [![MATLAB Simulation](https://img.shields.io/badge/MATLAB-Simulation-blue.svg)](https://www.mathworks.com/)
 [![Academic Theory](https://img.shields.io/badge/Theory-Zeros%20Relocation-orange.svg)](https://ndltd.ncl.edu.tw/)
